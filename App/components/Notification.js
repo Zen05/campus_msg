@@ -1,12 +1,17 @@
 import React,{Component} from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import global from '../utility/global';
+import MsgView from './MsgView'
 
 export default class Notification extends Component{
+  componentDidMount=()=>{
+    console.log('notification==line8:',global.baseUrl+':'+global.port+'/img/1.jpg')
+  }
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Notification!</Text>
-      </View>
+      
+        <MsgView></MsgView>
+      
     );
   }
 }
