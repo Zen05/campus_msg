@@ -4,7 +4,6 @@ import Register from './App/components/Register'
 import Add from './App/components/Add'
 import NotificationDetail from './App/components/NotificationDetail'
 import Notification from './App/components/Notification'
-import learning from './App/learnning/learning'
 
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
 const StackNavigatorConfig = {
@@ -28,10 +27,12 @@ const AppNavigator = createStackNavigator({
   },
   Notification:{
     screen: Notification,
+    headerTitle:'title',
+
   }
 }, {
     initialRouteName: 'Notification',
-},StackNavigatorConfig);
+});
 
 export default createAppContainer(AppNavigator);
 

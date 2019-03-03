@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import { View } from 'react-native';
 import global from '../utility/global';
 import MsgView from './MsgView'
 
@@ -31,14 +30,12 @@ export default class Notification extends Component{
               pageCount:resData.pageCount,
               pno:resData.pno, 
               data:resData.data
-             },console.log(this.state))
+             })
           }else{
-              this.setState({//失败时将输入框清空
-
-              })
-              //待加功能，弹出提示框，提示用户重新输入
-           //    ToastAndroid.show("手机号或密码错误，请重新输入", ToastAndroid.SHORT)
+            //提示用户网络连接错误
+              Pass;
           }
+          
       }
   )
   }
