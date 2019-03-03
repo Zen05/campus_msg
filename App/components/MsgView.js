@@ -16,8 +16,8 @@ class MsgView extends Component{
                 source={{uri:global.baseUrl+':'+global.port+'/img/1.jpg'}}>
             </Image>
             <View style={style.content}>
-            <Text style={style.title}>这里是标题栏</Text>
-            <Text style={style.introduction}>这里是详情页leramleramleramleramleramleramleramleramleramleramleram</Text>
+                <Text style={style.title}>这里是标题栏</Text>
+                <Text style={style.introduction}>这里是详情页leramleramleramleramleramleramleramleramleramleramleramleramleramleramleramleramleramleramleramleramleramleram</Text>
             </View>
         </View>
         );

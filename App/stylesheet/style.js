@@ -18,20 +18,22 @@ style = StyleSheet.create({
     },
     introduction:{
         fontSize:14,
-        color:'gray'
+        color:'gray',
+        flexWrap:'nowrap'
     },
     content:{
         height:57,
         backgroundColor:'#fff',
         borderBottomRightRadius:7,
-        borderBottomLeftRadius:7
+        borderBottomLeftRadius:7,
+        overflow:'hidden'
     },
     bar:{
         flexDirection:'row',
         justifyContent: 'space-between'
 
     },
-    content:{
+    bgContent:{
         flexDirection:'column',
         alignItems: 'center' 
     }

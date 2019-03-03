@@ -6,9 +6,9 @@ export default function background(WrappedComponent){
     return class Background extends Component{
         render(){
             return (
-                <View style={{flex:1, backgroundColor:'#a0a0a0'}}>
+                <View style={{flex:1, backgroundColor:'#f0f0f0'}}>
 
-                    <View style={style.content}>
+                    <View style={style.bgContent}>
                         <WrappedComponent />
                     </View>
                 </View>

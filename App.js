@@ -7,7 +7,9 @@ import Notification from './App/components/Notification'
 import learning from './App/learnning/learning'
 
 import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
-
+const StackNavigatorConfig = {
+ 
+}
 const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
@@ -26,13 +28,10 @@ const AppNavigator = createStackNavigator({
   },
   Notification:{
     screen: Notification,
-  },
-  learning:{
-    screen: learning,
   }
 }, {
-    initialRouteName: 'learning',
-});
+    initialRouteName: 'Notification',
+},StackNavigatorConfig);
 
 export default createAppContainer(AppNavigator);
 
