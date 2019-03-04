@@ -4,7 +4,8 @@ style = StyleSheet.create({
         justifyContent: 'center', 
         alignItems: 'flex-start', 
         height:217, 
-        width:320
+        width:320,
+        marginTop:10
     },
     img:{
         height:160, 
@@ -23,7 +24,8 @@ style = StyleSheet.create({
     },
     content:{
         height:57,
-        backgroundColor:'#fff',
+        width:320,
+        backgroundColor:'#f0f0f0',
         borderBottomRightRadius:7,
         borderBottomLeftRadius:7,
         overflow:'hidden'
@@ -34,8 +36,12 @@ style = StyleSheet.create({
 
     },
     bgContent:{
-        flexDirection:'column',
+        flex:1,
         alignItems: 'center' 
+    },
+    bg:{
+        flex:1,
+        backgroundColor:'#f5f5f5'
     }
     
 })

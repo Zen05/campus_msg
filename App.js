@@ -5,10 +5,8 @@ import Add from './App/components/Add'
 import NotificationDetail from './App/components/NotificationDetail'
 import Notification from './App/components/Notification'
 
-import { createAppContainer, createStackNavigator, StackActions, NavigationActions } from 'react-navigation';
-const StackNavigatorConfig = {
- 
-}
+import { createAppContainer, createStackNavigator } from 'react-navigation';
+
 const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
@@ -27,7 +25,6 @@ const AppNavigator = createStackNavigator({
   },
   Notification:{
     screen: Notification,
-    headerTitle:'title',
 
   }
 }, {
