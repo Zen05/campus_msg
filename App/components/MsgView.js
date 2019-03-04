@@ -7,14 +7,18 @@ class MsgView extends Component{
     constructor(){
         super();
         this.state={
-            List:[]
+            List:{}
         }
     }
 
+    componentDidMount=()=>{
+        console.log(this.state.List)
+    }
     
     componentWillReceiveProps=()=>{
-        // console.log('receive',this.props.res.data)
+        console.log('receive hao been called')
         var list = this.props.res;
+        console.log('list:line18:',list)
         this.setState({
             List:list
         })
@@ -35,8 +39,8 @@ class MsgView extends Component{
                         source={{uri:global.baseUrl+':'+global.port+'/img/1.jpg'}}>
                     </Image>
                     <View style={style.content}>
-                        <Text style={style.title}>{this.List.title}</Text>
-                        <Text style={style.introduction}>{this.List.introduction}</Text>
+                        <Text style={style.title}>{this.state.List.title}</Text>
+                        <Text style={style.introduction}>{this.state.List.introduction}</Text>
                     </View>     
                 </TouchableOpacity>
         );

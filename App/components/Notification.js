@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
 import global from '../utility/global';
-import {FlatList,TouchableOpacity,Image,View,Text} from 'react-native';
+import {ScrollView,FlatList,TouchableOpacity,Image,View,Text} from 'react-native';
 import MsgView from './MsgView';
-import { ScrollView } from 'react-native-gesture-handler';
 
 export default class Notification extends Component{
   constructor(){
@@ -59,13 +58,21 @@ export default class Notification extends Component{
   //   console.log('load more')
   // }
   render() {
-    console.log('Notification in render this.state line 45:',this.state)
+    // console.log('Notification in render this.state line 45:',this.state)
     return <ScrollView>
       {
         this.state.list.map((value,index)=>{
-          return<MsgView res={value}>
-
-          </MsgView>
+          // console.log('scrollview',value)
+          return <TouchableOpacity style={[style.msgbody,style.bgContent]} key={index}>
+          <Image 
+              style={style.img} 
+              source={{uri:global.baseUrl+':'+global.port+'/img/1.jpg'}}>
+          </Image>
+          <View style={style.content}>
+              <Text style={style.title}>{value.title}</Text>
+              <Text style={style.introduction}>{value.introduction}</Text>
+          </View>     
+      </TouchableOpacity>
         })
       }
     </ScrollView>
