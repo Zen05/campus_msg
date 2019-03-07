@@ -22,10 +22,21 @@ const AppNavigator = createStackNavigator({
   },
   NotificationDetail:{
     screen: NotificationDetail,
+    navigationOptions:()=>{//设置标题
+      return {
+        headerTitle:'详情',
+        headerTitleStyle:{color:'black'}
+      }
+    }
   },
   Notification:{
     screen: Notification,
-
+    navigationOptions:()=>{//设置标题
+      return {
+        headerTitle:'通知',
+        headerTitleStyle:{color:'black'}
+      }
+    }
   }
 }, {
     initialRouteName: 'Notification',

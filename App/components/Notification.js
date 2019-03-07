@@ -36,34 +36,36 @@ export default class Notification extends Component{
             //提示用户网络连接错误
               Pass;
           }
-         console.log('Notifica this.state line:39:',this.state)
+         console.log('Notification this.state line:39:',this.state)
       }
   )
   }
-//   showItem=(info)=>{
-//     console.log('info',info)
-//     // return <MsgView res={info}></MsgView>
-//     return <TouchableOpacity style={[style.msgbody,style.bgContent]}>
-//     <Image 
-//         style={style.img} 
-//         source={{uri:global.baseUrl+':'+global.port+'/img/1.jpg'}}>
-//     </Image>
-//     <View style={style.content}>
-//         <Text style={style.title}>{info.item.title}</Text>
-//         <Text style={style.introduction}>{info.item.introduction}</Text>
-//     </View>     
-// </TouchableOpacity>
-//   }
-  // loadMore=()=>{
-  //   console.log('load more')
-  // }
+
+  componentWillUnmount=()=>{
+    this.setState({
+      recordCount:null,
+      pageSize:null,
+      pageCount:null,
+      pno:null, 
+      list:null
+    })
+  }
+
+  handlerPress=(aid)=>{
+    this.props.navigation.navigate('NotificationDetail',{aid})
+  }
+
   render() {
     // console.log('Notification in render this.state line 45:',this.state)
     return <ScrollView>
+      <View style={style.bgContent}>
       {
         this.state.list.map((value,index)=>{
           // console.log('scrollview',value)
-          return <TouchableOpacity style={[style.msgbody,style.bgContent]} key={index}>
+          return <TouchableOpacity
+            onPress = {()=>this.handlerPress(value.aid)}
+            style={style.msgbody} 
+            key={index}>
           <Image 
               style={style.img} 
               source={{uri:global.baseUrl+':'+global.port+'/img/1.jpg'}}>
@@ -75,6 +77,7 @@ export default class Notification extends Component{
       </TouchableOpacity>
         })
       }
+      </View>
     </ScrollView>
     // <FlatList
     // data={this.state.list}

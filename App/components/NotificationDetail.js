@@ -9,8 +9,14 @@ export default class NotificationDetail extends Component{
       notification:{}
     }
   }
+  navigationOptions=()=>{//设置标题
+    return {
+      headerTitle:'detail',
+      headerTitleStyle:{color:'black'}
+    }
+  }
   componentDidMount=()=>{
-    var id=1;
+    var id=this.props.navigation.getParam('aid');
     // id = this.props.navigation.getParam('Aid');
     console.log(id);
     url = Global.baseUrl + ':' + Global.port + '/article/detail?aid='+id//后端程序未写完
@@ -25,6 +31,12 @@ export default class NotificationDetail extends Component{
     })
 
   }
+  componentWillUnmount=()=>{
+    this.setState({
+      notification:null
+    })
+  }
+
   render() {
     return (
       <ScrollView >
