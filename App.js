@@ -4,12 +4,16 @@ import Register from './App/components/Register'
 import Add from './App/components/Add'
 import NotificationDetail from './App/components/NotificationDetail'
 import Notification from './App/components/Notification'
+import learning from './App/learnning/learning'
 
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
+  },  
+  learning: {
+    screen: learning,
   },
   Login: {
     screen: Login,

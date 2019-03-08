@@ -1,11 +1,20 @@
 import {StyleSheet} from 'react-native'
 style = StyleSheet.create({
+    fontstyle:{
+        fontSize:12,
+        color:'gray'
+    },
+    timestyle:{
+        alignItems:'center'
+    },
+    container:{},
     msgbody:{
         justifyContent: 'center', 
         alignItems: 'flex-start', 
         height:217, 
         width:320,
-        marginTop:10
+        marginTop:10,
+        marginBottom:30
     },
     img:{
         height:160, 

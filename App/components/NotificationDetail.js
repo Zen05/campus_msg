@@ -26,7 +26,6 @@ export default class NotificationDetail extends Component{
       this.setState({
         notification:res
       })
-      
       // console.log('status:',this.state.notification)
     })
 
