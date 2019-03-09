@@ -3,7 +3,7 @@
  * author：zen
  */
 export default {
-    baseUrl:'http://172.150.12.67',//服务器url
+    baseUrl:'http://192.168.19.1',//服务器url
     port:'3000',//服务器端口
     timefilter:(time)=>{//时间转换函数，将数据库中展示的数据格式转换为年月日的格式
         var mydate = new Date(time);

@@ -9,12 +9,7 @@ export default class NotificationDetail extends Component{
       notification:{}
     }
   }
-  navigationOptions=()=>{//设置标题
-    return {
-      headerTitle:'detail',
-      headerTitleStyle:{color:'black'}
-    }
-  }
+
   componentDidMount=()=>{
     var id=this.props.navigation.getParam('aid');
     // id = this.props.navigation.getParam('Aid');
