@@ -34,12 +34,21 @@ export default class NotificationDetail extends Component{
   render() {
     return (
       <ScrollView >
-        <Text style={{fontWeight:'bold',fontSize:20}}>{this.state.notification.title}</Text>
-        <Text style={{fontSize:16}}>{this.state.notification.content}</Text>
-        <Text style={{fontSize:16,alignSelf:'flex-end'}}>{this.state.notification.Organization}</Text>
-        <Text style={{fontSize:16,alignSelf:'flex-end'}}>{this.state.notification.issuer1}</Text>
-        <Text style={{fontSize:16,alignSelf:'flex-end'}}>{this.state.notification.issuer2}</Text>
-        <Text style={{fontSize:16,alignSelf:'flex-end'}}>{Global.timefilter(this.state.notification.issue_data)}</Text>
+        {/* 文章区域 */}
+        <View>
+          <Text style={{fontWeight:'bold',fontSize:20}}>{this.state.notification.title}</Text>
+          <Text style={{fontSize:16}}>{this.state.notification.content}</Text>
+          <Text style={{fontSize:16,alignSelf:'flex-end'}}>{this.state.notification.Organization}</Text>
+          <Text style={{fontSize:16,alignSelf:'flex-end'}}>{this.state.notification.issuer1}</Text>
+          <Text style={{fontSize:16,alignSelf:'flex-end'}}>{this.state.notification.issuer2}</Text>
+          <Text style={{fontSize:16,alignSelf:'flex-end'}}>{Global.timefilter(this.state.notification.issue_data)}</Text>
+          <Text style={{fontSize:12,alignSelf:'flex-start',color:'gray',marginTop:50,marginLeft:20}}>阅读量 20</Text>
+        </View>
+
+        {/* 留言 */}
+        <View>
+
+        </View>
       </ScrollView>
     );
   }

@@ -1,75 +1,107 @@
-import React, {Component} from 'react';
-import {
-    StyleSheet,
-    View,
-    Text,
-    ScrollView,
-    TextInput,
-    ToastAndroid,
-    Button,
-} from 'react-native';
 
+//未加底部导航栏的
+import Login from './App/components/Login'
+import HomeScreen from './App/components/HomeScreen'
+import Register from './App/components/Register'
+import Add from './App/components/Add'
+import NotificationDetail from './App/components/NotificationDetail'
+import Notification from './App/components/Notification'
+import learning from './App/components/learning'
 
-export default class ScrollViewDemo extends Component {
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 
-    state = {
-        data:['第1个', '第2个', '第3个', '第4个', '第5个', '第6个', '第7个', '第8个', '第9个', '第10个'],
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomeScreen,
+  },  
+  Login: {
+    screen: Login,
+  },
+  Register: {
+    screen: Register,
+  },
+  learning: {
+    screen: learning,
+  },
+  Add: {
+    screen: Add,
+  },
+  NotificationDetail:{
+    screen: NotificationDetail,
+    navigationOptions:()=>{//设置标题
+      return {
+        headerTitle:'详情',
+        headerTitleStyle:{color:'black'}
+      }
     }
-
-    _scroll;
-
-    render() {
-        return (
-            <View style={{flex:1}}>
-                <Button title='切换数据' onPress={()=>{
-                    this.setState({
-                        data:['第11个', '第12个', '第13个', '第14个', '第15个', '第16个', '第17个', '第18个', '第19个', '第20个','第21个'],
-                    });
-                }}></Button>
-                <Button  title='滚动到y：100的位置' onPress={()=>{
-                    this._scroll.scrollTo({y:100});
-                }}/>
-                <Button  title='滚动到末尾' onPress={()=>{
-                    this._scroll.scrollToEnd();
-                }}/>
-                <ScrollView
-                    ref={(scroll)=>this._scroll = scroll}
-                    style={{borderColor:'red',borderWidth:2}}
-                    contentContainerStyle={{paddingLeft:20,paddingTop:20,paddingRight:20}}
-                    keyboardDismissMode='on-drag'
-                    keyboardShouldPersistTaps='never'
-                    showsVerticalScrollIndicator={true}
-                    scrollEnabled={true}
-                    pagingEnabled={true}
-                    horizontal={false}
-                    onContentSizeChange={(contentWidth, contentHeight)=>{
-                        var msg = 'onContentSizeChange:'+contentWidth+','+contentHeight;
-                        ToastAndroid.show(msg,ToastAndroid.SHORT);
-                    }}
-                onScroll={(e)=>{
-                    console.warn('onScroll');
-                }}>
-                    <Text style={{height:50,backgroundColor:'black',color:'white'}}>悬浮在顶部</Text>
-                    <TextInput />
-
-                    {
-                        this.state.data.map((item, index) => {
-                            var color = index * 23 + 10;
-                            return <Text style={[styles.text,{backgroundColor:color}]}>{item}</Text>
-                        })
-                    }
-                </ScrollView>
-            </View>
-        );
+  },
+  Notification:{
+    screen: Notification,
+    navigationOptions:()=>{//设置标题
+      return {
+        headerTitle:'通知',
+        headerTitleStyle:{color:'black'}
+      }
     }
-}
+  }
+}, {
+    initialRouteName: 'Notification',
+});
 
-const styles = StyleSheet.create({
-    text: {
-        height: 200,
-        textAlign: 'center',
-        textAlignVertical: 'center',
-        color: 'red',
-        fontSize: 30
+export default createAppContainer(AppNavigator);
+
+
+
+//加入底部导航栏的
+import Login from './App/components/Login'
+import HomeScreen from './App/components/HomeScreen'
+import Register from './App/components/Register'
+import Add from './App/components/Add'
+import NotificationDetail from './App/components/NotificationDetail'
+import Notification from './App/components/Notification'
+// import learning from './App/components/learning'
+
+import { createAppContainer, createStackNavigator, createBottomTabNavigator} from 'react-navigation';
+
+const AppNavigator = createBottomTabNavigator({
+  Home: {
+    screen: HomeScreen,
+  },  
+  Login: {
+    screen: Login,
+  },
+  Register: {
+    screen: Register,
+  },
+
+  Add: {
+    screen: Add,
+  },
+  NotificationDetail:{
+    screen: NotificationDetail,
+    navigationOptions:()=>{//设置标题
+      return {
+        headerTitle:'详情',
+        headerTitleStyle:{color:'black'}
+      }
     }
-})
+  },
+  Notification:{
+    screen: Notification,
+    navigationOptions:()=>{//设置标题
+      return {
+        headerTitle:'通知',
+        headerTitleStyle:{color:'black'}
+      }
+    }
+  }
+}, {
+    initialRouteName: 'Notification',
+});
+
+export default createAppContainer(AppNavigator);
+
+
+
+
+
