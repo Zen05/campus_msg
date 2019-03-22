@@ -8,12 +8,12 @@ import Register from './App/components/Register'
 // import Add from './App/components/Add'
 import NotificationDetail from './App/components/NotificationDetail'
 import Notification from './App/components/Notification'
+import Commont from './App/components/Commont'
 // import learning from './App/components/learning'
 
 // import { createAppContainer, createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 const HomeStack = createStackNavigator({
-
   Notification:{
     screen: Notification,
     navigationOptions:()=>{//设置标题
@@ -32,6 +32,17 @@ const HomeStack = createStackNavigator({
       }
     }
   },
+  Commont:{
+    screen:Commont,
+    navigationOptions:()=>{
+      return {
+        headerTitle:'评论',
+        headerTitleStyle:{
+            color:'black'
+        }
+      }
+    }
+  }
 })
 
 const SettingsStack = createStackNavigator({
