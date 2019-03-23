@@ -29,10 +29,10 @@ export default class NotificationDetail extends Component{
       notification:null
     })
   }
-  handlerPress=(cid)=>{
+  handlerPress=(aid)=>{
     //跳转到详情页面，并将参数传递过去
-    console.log('NotificationDetail line 35 cid:',cid)
-    this.props.navigation.navigate('Commont',{cid})
+    console.log('NotificationDetail line 35 cid:',aid)
+    this.props.navigation.navigate('Commont',{aid})
   }
   render() {
     return (
