@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Text, View, TextInput, Button} from 'react-native';
+import { Text, View, TextInput, Button, ToastAndroid} from 'react-native';
 import global from "../utility/global";
 
 class UselessTextInput extends Component {
@@ -37,13 +37,15 @@ export default class Commont extends Component{
   handlePress=()=>{
     console.log('you are click me')
     console.log(this.state.text)
-    var url = global.baseUrl + ':' + global.port + '/detail/commont'
-    fetch(url).then(res => res.json()).then(
+    var url = global.baseUrl + ':' + 
+    fetch(url,config).then(res => res.json()).then(
       result => {
-        if(result.code == 200 ){
-          pass;
+        console.log(result);
+        if(result.code == 200){
+          ToastAndroid.show('评论成功！',ToastAndroid.SHORT);
+          this.props.navigation.navigate("NotificationDetail")
         }else{
-          pass;
+          ToastAndroid.show('网络开小差了，请稍后再试哦！',ToastAndroid.SHORT);
         }
       }
     )

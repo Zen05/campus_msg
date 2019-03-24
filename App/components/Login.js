@@ -68,7 +68,6 @@ export default class Login extends Component{
                }
            }
        )
-       console.log("fetched")
     }
     //视图
     render(){
