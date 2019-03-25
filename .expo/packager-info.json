@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 3944,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 2656,
+  "expoServerNgrokUrl": "https://wq-spw.anonymous.campus-msg.exp.direct",
+  "packagerNgrokUrl": "https://packager.wq-spw.anonymous.campus-msg.exp.direct",
+  "ngrokPid": 7972
 }
