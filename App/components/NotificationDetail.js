@@ -71,6 +71,7 @@ export default class NotificationDetail extends Component{
     this.props.navigation.navigate('Commont',{aid})
   }
 
+  // showItem无用处
   showItem=(info)=>{
     console.log("showItem has been called")
     return (<View style={{flexDirection:'row',marginTop:10}}>
@@ -98,7 +99,14 @@ export default class NotificationDetail extends Component{
     </View>
   </View>)
   }
-
+  handlerZan=(index)=>{
+    console.log('you click zan')
+    var tmpData = this.state.data;
+    tmpData[index].zan++; 
+    this.setState({
+      data:tmpData
+    })
+  }
   //渲染留言
   getCommont=()=>{
     
@@ -132,11 +140,12 @@ export default class NotificationDetail extends Component{
               {/*/* 用户名和赞 */}
               <View  style={{flexDirection:'row',justifyContent:'space-between'}}>
                 <Text style={{}}>{value.user_name}</Text>
-                <View style={{flexDirection:'row'}}>
+                <View style={{flexDirection:'row'}}
+                    onPress={()=>this.handlerZan(index)}>
                   <Image 
                     source={require('../imgs/zan.png')}
                     style={{height:16,width:16}}></Image>
-                  <Text>赞</Text>
+                  <Text>{value.zan}</Text>
                 </View>
               </View>
               {/*/ 评论内容 */}

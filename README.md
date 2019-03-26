@@ -5,3 +5,6 @@ this is my project for learn Android
 D:\Android\sdk\tools\emulator.exe -netdelay none -netspeed full -avd my_phone
 > 启动项目
 npm start
+
+> notificationDetail 下点赞功能尚未完善，handlerZan位于102行，问题点击点赞图片时该函数不执行
+> 下一步开发留言板块和问卷调查板块问卷调查
