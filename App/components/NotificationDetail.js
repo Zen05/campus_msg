@@ -65,10 +65,10 @@ export default class NotificationDetail extends Component{
       isGetComment:false
     })
   }
-  handlerPress=(aid)=>{
+  handlerPress=(aid,title,userName)=>{
     //跳转到详情页面，并将参数传递过去
     console.log('NotificationDetail line 35 cid:',aid)
-    this.props.navigation.navigate('Commont',{aid})
+    this.props.navigation.navigate('Commont',{aid,title,userName})
   }
 
   // showItem无用处
@@ -121,7 +121,7 @@ export default class NotificationDetail extends Component{
           <Text style={{marginLeft:15,fontSize:16}}>评论区</Text> 
           <Text 
             style={{marginRight:15,color:'#5e7192',fontSize:16}}
-            onPress={()=>this.handlerPress(this.state.notification.aid)}>
+            onPress={()=>this.handlerPress(this.state.notification.aid,this.state.notification.title,this.state.notification.user_name)}>
             留言
           </Text>
         </View>
@@ -168,7 +168,7 @@ export default class NotificationDetail extends Component{
         <View style={{flex:1,marginTop:30,backgroundColor:'#f2f2f2',
           borderTopColor:'#f2f2f2',borderTopWidth:1}}>
           <Text style={{textAlign:'center',color:'#5e7192',height:50,fontSize:16,marginTop:10,justifyContent:'center'}} 
-            onPress={()=>this.handlerPress(this.state.notification.aid)}>写留言</Text>
+            onPress={()=>this.handlerPress(this.state.notification.aid,this.state.notification.title,this.state.notification.user_name)}>写留言</Text>
         </View>
       )
     }

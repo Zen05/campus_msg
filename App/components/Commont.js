@@ -20,15 +20,20 @@ export default class Commont extends Component{
     this.state={
       aid:0,
       text:'',
-      user_name:'zz'
+      user_name:'',
+      title:''
     }
   }
 
   componentDidMount=()=>{
     var id=this.props.navigation.getParam('aid');
+    var title = this.props.navigation.getParam('title');
+    var user_name = this.props.navigation.getParam('userName')
     // id = this.props.navigation.getParam('Aid');
     this.setState({
-      aid:id
+      aid:id,
+      title:title,
+      user_name:user_name
     })
     console.log('Commont line 15 aid:',id);
     
@@ -37,7 +42,17 @@ export default class Commont extends Component{
   handlePress=()=>{
     console.log('you are click me')
     console.log(this.state.text)
-    var url = global.baseUrl + ':' + 
+    var url = global.baseUrl + ':' + global.port + '/article/commont'
+    var config = {
+      method:"POST",//发送的方法
+      headers:{//头信息，发送json信息时使用
+           'Content-Type':'application/x-www-form-urlencoded'
+      },
+      body://post方法下的数据体
+      "aid="+this.state.aid+
+      "&user_name="+this.state.user_name + 
+      "&text=" + this.state.text 
+  }
     fetch(url,config).then(res => res.json()).then(
       result => {
         console.log(result);
@@ -54,7 +69,7 @@ export default class Commont extends Component{
   render() {
     return (
       <View style={{ flex: 1}}>
-        <Text style={{fontSize:14,color:'#484848',marginTop:12,marginBottom:12}}>Title!</Text>
+        <Text style={{fontSize:14,color:'#484848',marginTop:12,marginBottom:12}}>{this.state.title}</Text>
         <View style={{
           backgroundColor: this.state.text,
           borderBottomColor: '#000000',
