@@ -9,11 +9,20 @@ import Register from './App/components/Register'
 import NotificationDetail from './App/components/NotificationDetail'
 import Notification from './App/components/Notification'
 import Commont from './App/components/Commont'
+import Questionnaire from './App/components/Questionnaire'
 // import learning from './App/components/learning'
 
 // import { createAppContainer, createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 const HomeStack = createStackNavigator({
+  Questionnaire:{
+    screen:Questionnaire,
+    navigationOptions:()=>{
+      return {
+        headerTitle:'问卷调查'
+      }
+    }
+  },
   Notification:{
     screen: Notification,
     navigationOptions:()=>{//设置标题
