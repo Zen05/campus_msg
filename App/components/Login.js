@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import {Text,View,Image,TextInput,Button,ToastAndroid } from 'react-native'
+import Global from '../utility/global'
 // import { gray } from 'ansi-colors';
 
 export default class Login extends Component{
@@ -38,7 +39,7 @@ export default class Login extends Component{
    handlePress=()=>{
        console.log("handlePress has been called")
        //console.log("phone="+this.state.phone+"&upwd="+this.state.passWord)
-       url='http://192.168.47.1:3000/user/login'//请求的服务器地址
+       url=`${Global.baseUrl}:${Global.port}/user/login`//请求的服务器地址
        //发送post请求时的配置信息
        var config = {
            method:"POST",//发送的方法

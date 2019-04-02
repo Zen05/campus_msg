@@ -18,6 +18,7 @@ export default  class RadioGroup extends Component{
 
         this.state = {
             selectedIndex: this.props.selectedIndex,
+            gIndex: this.props.gIndex,//此处为修改项
         }
         this.prevSelected = this.props.selectedIndex
         this.onSelect = this.onSelect.bind(this)
@@ -42,24 +43,24 @@ export default  class RadioGroup extends Component{
         };
     }
 
-    onSelect(index, value){
+    onSelect(rIndex, value){
         this.setState({
-            selectedIndex: index
+            selectedIndex: rIndex
         })
         if(this.props.onSelect)
-            this.props.onSelect(index, value)
+            this.props.onSelect(rIndex, value, this.props.gIndex)
     }
 
     render(){
-        var radioButtons = React.Children.map(this.props.children, (radioButton, index) => {
-            let isSelected = this.state.selectedIndex == index
+        var radioButtons = React.Children.map(this.props.children, (radioButton, rIndex) => {
+            let isSelected = this.state.selectedIndex == rIndex
             let color = isSelected && this.props.activeColor?this.props.activeColor:this.props.color
             return (
                 <RadioButton
                     color={color}
                     activeColor={this.props.activeColor}
                     {...radioButton.props}
-                    index={index}
+                    index={rIndex}
                     isSelected={isSelected}
                 >
                     {radioButton.props.children}
