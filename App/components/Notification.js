@@ -50,8 +50,18 @@ export default class Notification extends Component{
           }
         //  console.log('Notification this.state line:39:',this.state)
       }
-  )
-  
+    )
+    var url1 = `${global.baseUrl}:${global.port}/questionnaire/list`
+    fetch(url1).then(res=>res.json()).then(result=>{
+      this.setState((prevState)=>{
+        var list = prevState.list;
+        list = list.concat(result.data.data);
+        console.log('this is list of concat',list)
+        return{
+          list
+        }
+      })
+    })
   }
 
   componentWillUnmount=()=>{
@@ -121,7 +131,9 @@ export default class Notification extends Component{
           // console.log('scrollview',value)
           return <View key={index}> 
             <View  style={style.timestyle}>
-              <Text  style={style.fontstyle}>{global.timefilter(value.issue_data)}</Text>
+              <Text style={style.fontstyle}>
+                {global.timefilter(value.issue_data?value.issue_data:value.qtime)}
+              </Text>
             </View>
             <TouchableOpacity
               onPress = {()=>this.handlerPress(value.aid)}
@@ -132,7 +144,10 @@ export default class Notification extends Component{
             </Image>
             <View style={style.content}>
                 <Text style={style.title}>{value.title}</Text>
-                <Text style={style.introduction}>{value.introduction}</Text>
+                <Text style={{        
+                  fontSize:14,
+                  color:'gray',
+                  flexWrap:'nowrap',}}>{value.introduction}</Text>
             </View>     
             </TouchableOpacity>
           </View>
@@ -140,10 +155,7 @@ export default class Notification extends Component{
       }
       </View>
     </ScrollView>
-    // <FlatList
-    // data={this.state.list}
-    // renderItem={this.showItem}>
-    // </FlatList>
+
   }
 }
 //return (<MsgView data = {value} key={index}></MsgView>)

@@ -11,30 +11,30 @@ export default class Questionnaire extends Component{
             data:[],
             qid:1,
             title:'',
-            select:[]
+            select:{}
         }
     }
-    onSelect=(rIndex, value, gIndex)=>{
-        console.log(`you select ${rIndex} and result is ${value},gIndex is ${gIndex}`)
+    onSelect=(rIndex, value, gIndex, tid)=>{
+        console.log(`you select ${rIndex} and result is ${value},gIndex is ${gIndex}, tid is ${tid}`)
         this.setState((prevState)=>{
-            var arr = prevState.select;
-            arr[gIndex]=value; 
+            var obj = prevState.select;
+            obj[tid]=value; 
             return{
-                select: arr
+                select: obj
             }
         })
-      }
+    }
     handlerPress=()=>{
         url = `${Global.baseUrl}:${Global.port}/questionnaire/setResult`;
-        arr = JSON.stringify(this.state.select)
-        console.log(arr)
+        obj = JSON.stringify(this.state.select)
+        console.log('obj',obj)
         var config = {
             method:"POST",//发送的方法
             headers:{//头信息，发送json信息时使用
                  'Content-Type':'application/x-www-form-urlencoded'
             },
             body://post方法下的数据体
-            'arr='+arr
+            'obj='+obj
         }
         fetch(url,config).then(res=>res.json()).then(result=>{
             console.log(result)
@@ -51,7 +51,7 @@ export default class Questionnaire extends Component{
                     data:result
                 }
             })
-            // console.log('this is this.state.data:',result);
+             console.log('this is this.state.data:',result);
         })
     }
 
@@ -64,7 +64,7 @@ export default class Questionnaire extends Component{
                 <View style={{marginTop:15}}>                    
                     {
                         this.state.data.map((values,gIndex)=>{
-                            var {A,B,C,D,E,F,G,H,I} = values;
+                            var {A,B,C,D,E,F,G,H,I,tid} = values;
                             // var arr = [A,B,C,D,E,F,G,H,I];
                             // console.log('this is arr in arr',arr);
                             // console.log('this is value in map',values);
@@ -81,7 +81,8 @@ export default class Questionnaire extends Component{
                                 </View>
                                 <RadioGroup
                                     gIndex={gIndex}
-                                    onSelect={(rIndex, value, gIndex) => this.onSelect(rIndex, value, gIndex)}>
+                                    tid = {tid}
+                                    onSelect={(rIndex, value, gIndex, tid) => this.onSelect(rIndex, value, gIndex, tid)}>
                                    
                                     <RadioButton value={`A`}>
                                         <Text>{`A.${A}`}</Text>

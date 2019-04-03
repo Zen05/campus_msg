@@ -15,14 +15,7 @@ import Questionnaire from './App/components/Questionnaire'
 // import { createAppContainer, createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 const HomeStack = createStackNavigator({
-  Questionnaire:{
-    screen:Questionnaire,
-    navigationOptions:()=>{
-      return {
-        headerTitle:'问卷调查'
-      }
-    }
-  },
+
   Notification:{
     screen: Notification,
     navigationOptions:()=>{//设置标题
@@ -38,6 +31,14 @@ const HomeStack = createStackNavigator({
       return {
         headerTitle:'详情',
         headerTitleStyle:{color:'black'}
+      }
+    }
+  },
+  Questionnaire:{
+    screen:Questionnaire,
+    navigationOptions:()=>{
+      return {
+        headerTitle:'问卷调查'
       }
     }
   },
