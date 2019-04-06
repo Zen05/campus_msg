@@ -24,7 +24,7 @@ style = StyleSheet.create({
     },
     title:{
         fontWeight:'bold',
-        fontSize:16
+        fontSize:16,
     },
     introduction:{
         fontSize:14,
@@ -32,12 +32,15 @@ style = StyleSheet.create({
         flexWrap:'nowrap'
     },
     content:{
-        height:57,
         width:320,
         backgroundColor:'#f0f0f0',
         borderBottomRightRadius:7,
         borderBottomLeftRadius:7,
-        overflow:'hidden'
+        paddingTop:10,
+        paddingLeft:10,
+        paddingBottom:10,
+        overflow:'hidden',
+        alignItems:'flex-start'
     },
     bar:{
         flexDirection:'row',

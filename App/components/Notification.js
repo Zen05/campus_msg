@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import global from '../utility/global';
 import {ScrollView,RefreshControl,ToastAndroid ,TouchableOpacity,Image,View,Text} from 'react-native';
-import MsgView from './MsgView';
+import style from '../stylesheet/style'
 
 export default class Notification extends Component{
   constructor(){
@@ -26,7 +26,7 @@ export default class Notification extends Component{
       // this._scroll.scrollToEnd()
   }
   componentWillMount=()=>{  
-    var url = `${global.baseUrl}:${global.port}/article/list?pagesize=${this.state.pageSize}&pno=${this.state.pno}` 
+    var url = `${global.baseUrl}:${global.port}/article/list2?pagesize=${this.state.pageSize}&pno=${this.state.pno}` 
     // console.log(url)
     fetch(url).then(
       res=>res.json()
@@ -51,7 +51,7 @@ export default class Notification extends Component{
         //  console.log('Notification this.state line:39:',this.state)
       }
     )
-    var url1 = `${global.baseUrl}:${global.port}/questionnaire/list`
+/*     var url1 = `${global.baseUrl}:${global.port}/questionnaire/list`
     fetch(url1).then(res=>res.json()).then(result=>{
       this.setState((prevState)=>{
         var list = prevState.list;
@@ -61,7 +61,7 @@ export default class Notification extends Component{
           list
         }
       })
-    })
+    }) */
   }
 
   componentWillUnmount=()=>{
@@ -74,13 +74,14 @@ export default class Notification extends Component{
     })
   }
 
-  handlerPress=(aid)=>{
+  handlerPress=(value)=>{
     //跳转到详情页面，并将参数传递过去
-    this.props.navigation.navigate('NotificationDetail',{aid})
+    if(value.aid) this.props.navigation.navigate('NotificationDetail',{aid:value.aid});
+    else this.props.navigation.navigate('Questionnaire',{qid:value.qid})
   }
 
   _onRefresh = () => {
-    var url = `${global.baseUrl}:${global.port}/article/list?pagesize=${this.state.pageSize}&pno=${this.state.pno}` 
+    var url = `${global.baseUrl}:${global.port}/article/list2?pagesize=${this.state.pageSize}&pno=${this.state.pno}` 
     //设置刷新状态为正在刷新
     this.setState({refreshing: true});
     //判断是否还有数据
@@ -132,11 +133,11 @@ export default class Notification extends Component{
           return <View key={index}> 
             <View  style={style.timestyle}>
               <Text style={style.fontstyle}>
-                {global.timefilter(value.issue_data?value.issue_data:value.qtime)}
+                {global.timefilter(value.issue_data)}
               </Text>
             </View>
             <TouchableOpacity
-              onPress = {()=>this.handlerPress(value.aid)}
+              onPress = {()=>this.handlerPress(value)}
               style={style.msgbody}>
             <Image 
                 style={style.img} 
@@ -144,10 +145,10 @@ export default class Notification extends Component{
             </Image>
             <View style={style.content}>
                 <Text style={style.title}>{value.title}</Text>
-                <Text style={{        
+                {/* <Text style={{        
                   fontSize:14,
                   color:'gray',
-                  flexWrap:'nowrap',}}>{value.introduction}</Text>
+                  flexWrap:'nowrap',}}>{value.introduction}</Text> */}
             </View>     
             </TouchableOpacity>
           </View>

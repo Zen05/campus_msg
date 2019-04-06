@@ -42,8 +42,13 @@ export default class Questionnaire extends Component{
         console.log('this is result of you select',this.state.select)
     }
     componentDidMount=()=>{
-        //var qid=this.props.navigation.getParam('aid');
-        var qid = 1;
+        var qid=this.props.navigation.getParam('qid');
+        this.setState(()=>{
+            return{
+                qid
+            }
+        })
+        // var qid = 1;
         var url = `${Global.baseUrl}:${Global.port}/questionnaire/detail?qid=${qid}`;
         fetch(url).then( res => res.json() ).then(result => {
             this.setState(()=>{
