@@ -58,7 +58,7 @@ export default class Login extends Component{
                 console.log(result);
             //对数据的返回结果进行处理
                if(result.code == 200 ){//成功时跳向指定的页面
-                   this.props.navigation.navigate("Home")
+                   this.props.navigation.navigate("Notification")
                }else{
                    this.setState({//失败时将输入框清空
                        phone:'',

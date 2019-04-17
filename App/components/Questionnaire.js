@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Text,View,Button,ScrollView} from 'react-native';
+import {Text,View,Button,ScrollView,ToastAndroid} from 'react-native';
 import {RadioGroup, RadioButton} from 'react-native-flexi-radio-button';
 import Global from '../utility/global'
 
@@ -37,7 +37,10 @@ export default class Questionnaire extends Component{
             'obj='+obj
         }
         fetch(url,config).then(res=>res.json()).then(result=>{
-            console.log(result)
+            if(result.code==200) {
+                ToastAndroid.show('测评成功，感谢您的参与！',ToastAndroid.SHORT);
+                this.props.navigation.navigate("Notification")
+            }
         })
         console.log('this is result of you select',this.state.select)
     }

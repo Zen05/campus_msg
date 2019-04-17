@@ -15,7 +15,9 @@ import Questionnaire from './App/components/Questionnaire'
 // import { createAppContainer, createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 const HomeStack = createStackNavigator({
-
+  Login: {
+    screen: Login,
+  },
   Notification:{
     screen: Notification,
     navigationOptions:()=>{//设置标题
