@@ -10,6 +10,7 @@ import NotificationDetail from './App/components/NotificationDetail'
 import Notification from './App/components/Notification'
 import Commont from './App/components/Commont'
 import Questionnaire from './App/components/Questionnaire'
+import SettingsScreen from './App/components/SettingsScreen'
 // import learning from './App/components/learning'
 
 // import { createAppContainer, createStackNavigator, createBottomTabNavigator} from 'react-navigation';
@@ -56,6 +57,15 @@ const HomeStack = createStackNavigator({
 })
 
 const SettingsStack = createStackNavigator({
+  SettingsScreen:{
+    screen:SettingsScreen,
+    navigationOptions:()=>{//设置标题
+      return {
+        headerTitle:'设置',
+        headerTitleStyle:{color:'black'}
+      }
+    }
+  },
   Login: {
     screen: Login,
   },
